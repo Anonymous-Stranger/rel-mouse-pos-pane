@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- author: A.G. -->
+
+<html>
+	
+	<head>
+		<title>Relative Mouse Pos Pane Demo</title>
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+		<link rel='import' href='../../polymer/polymer.html'/>
+
+		<link rel='import' href='../rel-mouse-pos-pane.html'/>
+
+		<style>
+			#container {
+				width: 400px;
+
+				margin-top: 150px;
+				margin-left: 50px;
+			}
+
+			#rmpPane, #coords {
+				width: 100%;
+				vertical-align: middle;
+				text-align: center;
+			}
+
+			#rmpPane {
+				display: block;
+				
+				height: 300px;
+				line-height: 300px;
+
+				width: 100%;
+
+				background-color: crimson;
+				color: white;
+			}
+
+			#coords { margin-top: 10px; }
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<template is='dom-bind'>
+
+			<div id='container'>
+
+				<rel-mouse-pos-pane id='rmpPane' mouse-x="{{mouseX}}" mouse-y="{{mouseY}}">
+					mouse over me
+				</rel-mouse-pos-pane>
+
+				<div id='coords'>
+					<span>{{mouseX}}</span>, <span>{{mouseY}}</span>
+				</div>
+
+			</div>
+
+		</template>
+
+	</body>
+
+</html>

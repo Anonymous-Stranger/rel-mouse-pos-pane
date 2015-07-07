@@ -1,0 +1,26 @@
+{
+  "name": "rel-mouse-pos-pane",
+  "version": "0.0.1",
+  "authors": [
+    "Akash Gaonkar <akashgaonkar@gmail.com>"
+  ],
+  "description": "\"A polymer webcomponent to track mouse position relative to itself.",
+  "main": "rel-mouse-pos-pane.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "rel-mouse-pos-pane"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.0.5"
+  }
+}

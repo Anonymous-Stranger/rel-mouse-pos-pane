@@ -1,0 +1,79 @@
+
+<link rel='import' href='../polymer/polymer.html'/>
+
+<dom-module id='rel-mouse-pos-pane'>
+	<template>
+		<content></content>
+	</template>
+
+	<script>
+		Polymer({
+			is: "rel-mouse-pos-pane",
+
+			properties: {
+				mouseX: {
+					type: Number,
+					readonly: true,
+					notify: true
+				},
+				mouseY: {
+					type: Number,
+					readonly: true,
+					notify: true
+				}
+			},
+
+			listeners: {
+				"down": "__onPolyEvt",
+				"up": "__onPolyEvt",
+				"tap": "__onPolyEvt",
+				"track": "__onPolyEvt",
+
+				"click": "__onJSEvt",
+				"dblclick": "__onJSEvt",
+				"mousedown": "__onJSEvt",
+				"mouseenter": "__onJSEvt",
+				"mouseleave": "__onJSEvt",
+				"mousemove": "__onJSEvt",
+				"mouseover": "__onJSEvt",
+				"mouseout": "__onJSEvt",
+				"mouseup": "__onJSEvt",
+				"drag": "__onJSEvt",
+				"dragend": "__onJSEvt",
+				"dragenter": "__onJSEvt",
+				"dragleave": "__onJSEvt",
+				"dragover": "__onJSEvt",
+				"dragstart": "__onJSEvt",
+				"drop": "__onJSEvt"
+			},
+
+			__onPolyEvt: function(evt) {
+				this.updateEventAndPos(evt, this.getRelPos(evt.detail.x, evt.detail.y));
+			},
+
+			__onJSEvt: function(evt) {
+				this.updateEventAndPos(evt, this.getRelPos(evt.x, evt.y));
+			},
+
+			updateEventAndPos: function(evt, relPos) {
+				evt.detail = evt.detail ? evt.detail : {};
+				evt.detail.posInContainer = this.updatePos(relPos);
+			},
+
+			updatePos: function(relPos) {
+				this.mouseX = relPos.x;
+				this.mouseY = relPos.y;
+				return relPos;
+			},
+
+			getRelPos: function(screenX, screenY) {
+				var bounds = this.getBoundingClientRect();
+				return {
+					x: screenX - bounds.left,
+					y: screenY - bounds.top
+				};
+			}
+
+		});
+	</script>
+</dom-module>
